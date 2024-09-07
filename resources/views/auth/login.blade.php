@@ -1,48 +1,43 @@
 <x-guest-layout>
+    <div class="absolute top-4 left-4">
+        <a href="/" class="hover:underline"> &lt; Go Back</a>
+    </div>
     <x-authentication-card>
-        <x-slot name="logo">
-            <x-authentication-card-logo />
-        </x-slot>
+    
+            <!-- Form Section -->
+            <div class="w-full md:w-[45%] p-8">
+                <h1 class="text-4xl font-bold mb-2">Welcome Back 👋</h1>
+                <p class="text-gray-600 mb-8">
+                    With PELE your home is just a few clicks away!
+                </p>
+                <form method="POST" action="{{ route('login') }}" class="space-y-4">
+                    @csrf
+                    <x-validation-errors class="mb-4" />
+                    <div>
+                        <x-form-label for="email">Email Address</x-form-label>
+                        <x-form-input type="email" id="email" name="email" placeholder="@ davon@mail.com" />
+                    </div>
+                    <div>
+                        <x-form-label for="password">Password</x-form-label>
+                        <x-form-input type="password" id="password" name="password" placeholder="••••••••" />
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <button type="submit" class="w-36 flex justify-center py-3 px-4 border border-transparent rounded-full shadow-sm text-sm font-medium text-white bg-[#8F00FF] hover:bg-[#7700CC] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#8F00FF]">
+                            Login
+                        </button>
 
-        <x-validation-errors class="mb-4" />
-
-        @session('status')
-            <div class="mb-4 font-medium text-sm text-green-600 dark:text-green-400">
-                {{ $value }}
+                        @if (Route::has('password.request'))
+                            <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('password.request') }}">
+                                {{ __('Forgot your password?') }}
+                            </a>
+                        @endif
+                    </div>
+                   
+                </form>
+                <p class="mt-4 text-sm text-gray-600">
+                    Don't have an account? <a href="/register" class="text-[#8F00FF] hover:underline">Create free account</a>
+                </p>
             </div>
-        @endsession
 
-        <form method="POST" action="{{ route('login') }}">
-            @csrf
-
-            <div>
-                <x-label for="email" value="{{ __('Email') }}" />
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-            </div>
-
-            <div class="mt-4">
-                <x-label for="password" value="{{ __('Password') }}" />
-                <x-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" />
-            </div>
-
-            <div class="block mt-4">
-                <label for="remember_me" class="flex items-center">
-                    <x-checkbox id="remember_me" name="remember" />
-                    <span class="ms-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Remember me') }}</span>
-                </label>
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('password.request') }}">
-                        {{ __('Forgot your password?') }}
-                    </a>
-                @endif
-
-                <x-button class="ms-4">
-                    {{ __('Log in') }}
-                </x-button>
-            </div>
-        </form>
     </x-authentication-card>
 </x-guest-layout>
