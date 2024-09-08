@@ -5,3 +5,17 @@
 [x-cloak] {
     display: none;
 }
+
+.gradient-text {
+    background: linear-gradient(to right, #8F00FF, #00A3FF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+}
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
