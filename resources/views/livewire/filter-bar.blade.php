@@ -1,4 +1,4 @@
-<div class="sticky top-16 w-full bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 shadow-md p-4">
+<div class="sticky top-16 w-full bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 shadow-md p-4 z-40">
     <div class="flex flex-wrap items-center gap-4">
       <div class="flex-grow">
         <input
@@ -8,9 +8,9 @@
         />
       </div>
       <div class="relative">
-        <x-filter-select>
-          <option value="" disabled selected>Category</option>
-          <option value="all">All Categories</option>
+        <x-filter-select name="category">
+          <option value="" disabled selected>For Rent</option>
+          <option value="all">For Sale</option>
           <option value="electronics">Electronics</option>
           <option value="clothing">Clothing</option>
           <option value="books">Books</option>
@@ -22,11 +22,12 @@
         </div> --}}
       </div>
       <div class="relative">
-        <x-filter-select>
-          <option value="all">All Prices</option>
-          <option value="0-50">$0 - $50</option>
-          <option value="50-100">$50 - $100</option>
-          <option value="100+">$100+</option>
+        <x-filter-select name="price">
+            <option value="" disabled selected>Price</option>
+            <option value="all">All Prices</option>
+            <option value="0-50">$0 - $50</option>
+            <option value="50-100">$50 - $100</option>
+            <option value="100+">$100+</option>
         </x-filter-select>
         {{-- <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
           <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -35,8 +36,8 @@
         </div> --}}
       </div>
       <div class="relative">
-        <x-filter-select>
-          <option value="" disabled selected>Rating</option>
+        <x-filter-select name="rooms">
+          <option value="" disabled selected>Rooms</option>
           <option value="all">All Ratings</option>
           <option value="4+">4+ Stars</option>
           <option value="3+">3+ Stars</option>
@@ -49,8 +50,8 @@
         </div> --}}
       </div>
       <div class="relative">
-        <x-filter-select>
-          <option value="" disabled selected>Location</option>
+        <x-filter-select name="baths">
+          <option value="" disabled selected>Baths</option>
           <option value="all">All Locations</option>
           <option value="usa">USA</option>
           <option value="europe">Europe</option>
