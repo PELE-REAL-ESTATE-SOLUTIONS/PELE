@@ -19,7 +19,7 @@
                 </div>
             </div>
             <div class="absolute left-1/2 transform -translate-x-1/2">
-                <div class="text-2xl font-bold dark:text-white">LOGO</div>
+                <a href="{{ route('property-listings') }}" class="text-2xl font-bold dark:text-white">LOGO</a>
             </div>
             <div class="flex-shrink-0">
                 <div class="flex space-x-4">

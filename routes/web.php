@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\PropertyListings;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -14,4 +15,6 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+    Route::get('/property-listings', [PropertyListings::class, 'render'])->name('property-listings');
+    Route::get('/property-listings/create', [PropertyListings::class, 'create'])->name('create-property-listings');
 });
