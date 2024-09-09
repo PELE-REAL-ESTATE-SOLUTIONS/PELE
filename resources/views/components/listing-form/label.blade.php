@@ -1,0 +1,1 @@
+<label {{ $attributes }} class="block mb-2 dark:text-white">{{ $slot }}</label>

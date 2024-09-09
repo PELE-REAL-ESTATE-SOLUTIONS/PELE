@@ -19,7 +19,7 @@
     @livewireStyles
 </head>
 
-<body class="font-sans antialiased dark:bg-gray-900">
+<body class="font-sans antialiased dark:bg-gray-900 hover:cursor-default">
     <x-banner />
 
     <div class="min-h-screen dark:bg-gray-900">
