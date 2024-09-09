@@ -8,7 +8,7 @@
                     <p class="text-sm text-gray-400 leading-relaxed">Showing results for your query</p>
                 </div>
 
-                <x-button-link path="{{ route('create-property-listings')}}">Create Listing</x-button-link>
+                <x-main-button tag="a" path="{{ route('create-property-listings')}}">Create Listing</x-main-button>
             </div>
             <x-property-grid />
         </div>
