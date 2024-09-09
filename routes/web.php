@@ -17,4 +17,5 @@ Route::middleware([
     })->name('dashboard');
     Route::get('/property-listings', [PropertyListings::class, 'render'])->name('property-listings');
     Route::get('/property-listings/create', [PropertyListings::class, 'create'])->name('create-property-listings');
+    Route::post('/property-listings', [PropertyListings::class, 'store'])->name('add-listing');
 });

@@ -10,7 +10,9 @@
                 </div>
             </div>
 
-            <form nethod="POST" ation="{{ route('create-property-listings') }}">
+            <x-validation-errors />
+            <form method="POST" action="{{ route('add-listing') }}" enctype="multipart/form-data">
+                @csrf
                 <div class="space-y-6 px-6 py-4 border rounded-lg mb-6">
                     <div>
                         <h1 class="text-md font-bold dark:text-white">Property Details</h1>
@@ -18,15 +20,21 @@
                     </div>
                     <div class="grid grid-cols-2 gap-6">
                         <div>
-                            <x-listing-form.label for="propertyType">Property Type</x-listing-form.label>
-                            <x-listing-form.select name="propertyType">
-                                <option>Bungalow</option>
+                            <x-listing-form.label for="property_type">Property Type</x-listing-form.label>
+                            <x-listing-form.select name="property_type">
+                                <option value="flat">Flat</option>
+                                <option value="apartment">Apartment</option>
+                                <option value="storey">Storey Building</option>
+                                <option value="bungalow">Bungalow</option>
+                                <option value="mansion">Mansion</option>
+                                <option value="villa">Villa</option>
                             </x-listing-form.select>
                         </div>
                         <div>
-                            <x-listing-form.label for="listingType">Listing Type</x-listing-form.label>
-                            <x-listing-form.select name="listingType">
-                                <option>For Sale</option>
+                            <x-listing-form.label for="listing_type">Listing Type</x-listing-form.label>
+                            <x-listing-form.select name="listing_type">
+                                <option value="sale">For Sale</option>
+                                <option valee="rent">For Rent</option>
                             </x-listing-form.select>
 
                         </div>
@@ -35,7 +43,7 @@
                     <div class="grid grid-cols-2 gap-6">
                         <div>
                             <x-listing-form.label for="price">Price (NLE)</x-listing-form.label>
-                            <x-listing-form.input name="price" placeholder="150000" />
+                            <x-listing-form.input type="number" name="price" placeholder="150000" step="0.00001" />
                         </div>
                         <div>
                             <x-listing-form.label for="location">Location</x-listing-form.label>
@@ -45,7 +53,7 @@
 
                     <div>
                         <x-listing-form.label for="area">Area (ft)</x-listing-form.label>
-                        <x-listing-form.input type="number" name="area" placeholder="3000" />
+                        <x-listing-form.input type="number" name="area" placeholder="3000" step="0.00001" />
                     </div>
 
                     <div class="grid grid-cols-2 gap-6">
@@ -121,7 +129,7 @@
                     </label>
                 </div>
                 <div class="w-full flex items-center justify-end">
-                    <x-main-button color="bg-custom-purple" path="{{ route('create-property-listings')}}">Add Listing
+                    <x-main-button color="bg-custom-purple">Add Listing
                     </x-main-button>
                 </div>
             </form>

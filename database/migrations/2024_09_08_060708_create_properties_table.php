@@ -13,6 +13,20 @@ return new class extends Migration
     {
         Schema::create('properties', function (Blueprint $table) {
             $table->id();
+            $table->string('property_type');
+            $table->string('listing_type');
+            $table->float('price');
+            $table->string('location');
+            $table->string('area');
+            $table->integer('bedrooms')->default(0);
+            $table->integer('bathrooms')->default(0);
+            $table->integer('livingrooms')->default(0);
+            $table->integer('kitchens')->default(0);
+            $table->integer('diningrooms')->default(0);
+            $table->text('description');
+            $table->text('amenities');
+            $table->boolean('featured')->default(false);
+            $table->boolean('approved')->default(false);
             $table->timestamps();
         });
     }
