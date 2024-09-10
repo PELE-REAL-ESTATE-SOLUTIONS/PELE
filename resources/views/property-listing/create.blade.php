@@ -109,21 +109,22 @@
 
                     <div class="grid grid-cols-1 gap-6">
                         <div class="w-full max-w-md">
-                            <label for="file-upload"
+                            <label for="pictures"
                                 class="flex flex-col items-center justify-center w-full h-32 px-4 transition border-2 border-custom-blue border-dashed rounded-lg appearance-none cursor-pointer hover:border-blue-500 focus:outline-none">
                                 <span class="flex flex-col items-center space-y-1">
                                     <span class="font-medium text-blue-900">Upload Images (at least 5)</span>
                                     <span class="text-xs text-blue-600">ImageName.png</span>
                                 </span>
-                                <input id="file-upload" type="file" class="hidden" accept="image/*" multiple>
+                                <input id="pictures" name="pictures[]" type="file" class="hidden" accept="image/*"
+                                    multiple>
                             </label>
                         </div>
                     </div>
                 </div>
                 <div class="flex items-center mb-2">
-                    <input id="terms" type="checkbox"
+                    <input id="terms_of_service" name="terms_of_service" type="checkbox"
                         class="h-4 w-4 text-custom-blue focus:ring-custom-blue border-gray-300 rounded dark:bg-transparent">
-                    <label for="terms" class="ml-2 text-sm text-gray-700 dark:text-white">
+                    <label for="terms_of_service" class="ml-2 text-sm text-gray-700 dark:text-white">
                         I agree to the <a href="#" class="text-custom-blue hover:underline font-semibold">Terms of
                             Service</a>
                     </label>

@@ -25,6 +25,7 @@ return new class extends Migration
             $table->integer('diningrooms')->default(0);
             $table->text('description');
             $table->text('amenities');
+            $table->json('pictures_paths');
             $table->boolean('featured')->default(false);
             $table->boolean('approved')->default(false);
             $table->timestamps();
