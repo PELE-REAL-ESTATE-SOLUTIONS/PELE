@@ -176,7 +176,7 @@
 
     <!-- Responsive Navigation Menu -->
     <div :class="{'absolute': open, 'hidden': ! open}"
-        class="hidden sm:absolute z-60 bg-gray-900 border-t border-gray-200 dark:border-gray-600 w-screen">
+        class="hidden sm:absolute z-60 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-600 w-screen">
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('buy')">
                 {{ __('Buy') }}
