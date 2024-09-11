@@ -6,6 +6,8 @@ use Livewire\Component;
 
 class PropertyCard extends Component
 {
+    public $property;
+
     public function render()
     {
         return view('livewire.property-card');

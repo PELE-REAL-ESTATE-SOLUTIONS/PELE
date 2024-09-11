@@ -34,7 +34,7 @@
                             <x-listing-form.label for="listing_type">Listing Type</x-listing-form.label>
                             <x-listing-form.select name="listing_type">
                                 <option value="sale">For Sale</option>
-                                <option valee="rent">For Rent</option>
+                                <option value="rent">For Rent</option>
                             </x-listing-form.select>
 
                         </div>

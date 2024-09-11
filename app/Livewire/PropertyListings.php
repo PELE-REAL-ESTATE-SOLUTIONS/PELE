@@ -10,7 +10,9 @@ class PropertyListings extends Component
 {
     public function render()
     {
-        return view('property-listing.index');
+        $properties = Property::paginate(5);
+
+        return view('property-listing.index', ['properties' => $properties]);
     }
 
     public function create()
@@ -60,5 +62,9 @@ class PropertyListings extends Component
         Property::create($attributes);
         return redirect()->route('property-listings');
 
+    }
+
+    public function show(Property $property) {
+        return view('property-listing.show',['property' => $property]);
     }
 }
