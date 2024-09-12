@@ -11,27 +11,20 @@
             </div>
 
             <div class="grid grid-cols-4 gap-4 mb-4">
+                @foreach($firstFivePictures as $picture)
+                @if ($loop->first)
                 <div class="h-full col-span-2 relative">
-                    <img src="https://abh.ai/random/400/400" alt="Main property image"
-                        class="w-full h-full object-cover rounded-lg" />
+                    <img src="{{ asset('storage/' . $picture) }}" alt="Property Picture" />
                 </div>
+                @endif
+                @endforeach
                 <div class="col-span-2 grid grid-cols-2 gap-4">
-                    <div class="aspect-square relative">
-                        <img src="https://abh.ai/random/400/400" alt="Property image 1"
-                            class="w-full h-full object-cover rounded-lg" />
-                    </div>
-                    <div class="aspect-square relative">
-                        <img src="https://abh.ai/random/400/400" alt="Property image 2"
-                            class="w-full h-full object-cover rounded-lg" />
-                    </div>
-                    <div class="aspect-square relative">
-                        <img src="https://abh.ai/random/400/400" alt="Property image 3"
-                            class="w-full h-full object-cover rounded-lg" />
-                    </div>
-                    <div class="aspect-square relative">
-                        <img src="https://abh.ai/random/400/400" alt="Property image 4"
-                            class="w-full h-full object-cover rounded-lg" />
-                    </div>
+                    @foreach($firstFivePictures as $picture)
+                    @if (!$loop->first)
+                    <img src="{{ asset('storage/' . $picture) }}" alt="Property Picture">
+                    @endif
+
+                    @endforeach
                 </div>
             </div>
             <div class="w-full flex items-center justify-end mb-8">

@@ -65,6 +65,9 @@ class PropertyListings extends Component
     }
 
     public function show(Property $property) {
-        return view('property-listing.show',['property' => $property]);
+
+        $pictures = json_decode($property->pictures_paths, true);
+        $firstFivePictures = array_slice($pictures, 0, 4);
+        return view('property-listing.show',['property' => $property, 'firstFivePictures' => $firstFivePictures]);
     }
 }

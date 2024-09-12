@@ -10,6 +10,8 @@ class PropertyCard extends Component
 
     public function render()
     {
-        return view('livewire.property-card');
+        $pictures = json_decode($this->property->pictures_paths, true);
+        $firstPicture = !empty($pictures) ? $pictures[0] : null;
+        return view('livewire.property-card', ['firstPicture' => $firstPicture]);
     }
 }
