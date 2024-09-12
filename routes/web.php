@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\Gallery;
 use App\Livewire\PropertyListings;
 use Illuminate\Support\Facades\Route;
 
@@ -19,4 +20,5 @@ Route::middleware([
     Route::get('/property-listings/create', [PropertyListings::class, 'create'])->name('create-property-listings');
     Route::post('/property-listings', [PropertyListings::class, 'store'])->name('add-listing');
     Route::get('/property-listings/{property}', [PropertyListings::class, 'show'])->name('listing-details');
+    Route::get('/property-listings/{property}/images', [Gallery::class, 'render'])->name('gallery');
 });

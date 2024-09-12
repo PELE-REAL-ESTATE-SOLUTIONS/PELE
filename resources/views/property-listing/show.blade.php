@@ -35,36 +35,42 @@
                 </div>
             </div>
             <div class="w-full flex items-center justify-end mb-8">
-                <button
-                    class="px-4 py-2 bg-transparent border-2 border-gray-800 text-purple-600 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50 transition duration-150 ease-in-out">
+                <a href="{{ route('gallery', ['property' => $property]) }}"
+                    class="px-4 py-2 bg-transparent border-2 dark:border-gray-800 text-purple-600 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50 transition duration-150 ease-in-out">
                     View all photos
-                </button>
+                </a>
             </div>
 
-            <div class="bg-transparent rounded-lg shadow mb-8">
-                <div class="flex justify-between items-start mb-4">
-                    <div>
+            <div class="bg-transparent mb-8">
+                <div class=" mb-4">
+                    <div class="flex items-start justify-between">
                         <h1 class="text-3xl font-bold mb-2 dark:text-white">NLE {{ number_format($property->price) }} -
                             {{ strtoupper($property->property_type) }}</h1>
-                        <div class="flex justify-between items-center w-full">
-                            <p class="text-xl text-gray-600 dark:text-gray-400">{{ strtoupper($property->location) }}
-                            </p>
-                            <div class="flex space-x-4 text-lg dark:text-gray-400">
-                                <span><strong>{{ $property->bedrooms }}</strong> bedrooms</span>
-                                <span><strong>{{ $property->bathrooms }}</strong> bathrooms</span>
-                                <span><strong>{{ $property->area }}</strong> sqft</span>
-                            </div>
+
+                        <span
+                            class="bg-custom-blue/10 text-custom-blue px-3 py-1 rounded-full text-sm font-semibold">FOR
+                            {{
+                            strtoupper($property->listing_type) }}</span>
+                    </div>
+                    <div class="flex justify-between items-center w-full">
+                        <p class="text-xl text-gray-600 dark:text-gray-400">{{ strtoupper($property->location) }}
+                        </p>
+                        <div class="flex space-x-4 text-lg dark:text-gray-400">
+                            <span><strong>{{ $property->bedrooms }}</strong> bedrooms |</span>
+                            <span><strong>{{ $property->bathrooms }}</strong> bathrooms |</span>
+                            <span><strong>{{ $property->area }}</strong> sqft</span>
                         </div>
                     </div>
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold">FOR {{
-                        strtoupper($property->listing_type) }}</span>
                 </div>
                 <div class="flex space-x-4 mb-8">
-                    <span class="bg-blue-200 text-custom-blue px-4 py-2 rounded-md text-sm">{{ $property->livingrooms }}
+                    <span class="bg-custom-blue/10 text-custom-blue px-4 py-2 rounded-md text-sm">{{
+                        $property->livingrooms }}
                         Living Room</span>
-                    <span class="bg-blue-200 text-custom-blue px-4 py-2 rounded-md text-sm">{{ $property->kitchens }}
+                    <span class="bg-custom-blue/10 text-custom-blue px-4 py-2 rounded-md text-sm">{{ $property->kitchens
+                        }}
                         Kitchens</span>
-                    <span class="bg-blue-200 text-custom-blue px-4 py-2 rounded-md text-sm">{{ $property->diningrooms }}
+                    <span class="bg-custom-blue/10 text-custom-blue px-4 py-2 rounded-md text-sm">{{
+                        $property->diningrooms }}
                         Dining Room</span>
                 </div>
                 <div class="grid grid-cols-3 gap-8">
