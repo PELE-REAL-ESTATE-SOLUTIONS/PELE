@@ -23,27 +23,27 @@
                     <!-- Repeat the above div for other listings -->
                 </div>
                 <div>
-                    <div class="bg-white rounded-lg border p-6">
-                        <h3 class="text-lg font-semibold mb-4">Recent Customers</h3>
-                        <p class="text-gray-500 mb-4">Total number of clients: 4</p>
+                    <div class="bg-white dark:bg-gray-800 dark:border-gray-700 rounded-lg border p-6">
+                        <h3 class="text-lg dark:text-white font-semibold mb-4">Recent Customers</h3>
+                        <p class="text-gray-500 dark:text-white/50 mb-4">Total number of clients: 4</p>
                         <ul class="space-y-4">
                             <li class="flex items-center justify-between">
                                 <div class="flex items-center">
-                                    <img src="https://via.placeholder.com/40" alt="Jenny Wilson"
+                                    <img src="https://abh.ai/random/400/400" alt="Jenny Wilson"
                                         class="w-10 h-10 rounded-full mr-3">
                                     <div>
-                                        <p class="font-medium">Jenny Wilson</p>
-                                        <p class="text-gray-500 text-sm">w.lawson@example.com</p>
+                                        <p class="font-medium dark:text-white">Jenny Wilson</p>
+                                        <p class="text-gray-500 dark:text-white/80 text-sm">w.lawson@example.com</p>
                                     </div>
                                 </div>
                                 <div class="text-right">
-                                    <p class="text-sm">Date</p>
-                                    <p class="text-gray-500 text-sm">Time</p>
+                                    <p class="text-sm dark:text-white">Date</p>
+                                    <p class="text-gray-500 dark:text-white/80 text-sm">Time</p>
                                 </div>
                             </li>
                             <!-- Repeat the above li for other customers -->
                         </ul>
-                        <a href="#" class="text-blue-500 flex items-center mt-4">
+                        <a href="#" class="text-custom-blue flex items-center mt-4">
                             SEE ALL CUSTOMERS
                             <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                                 xmlns="http://www.w3.org/2000/svg">

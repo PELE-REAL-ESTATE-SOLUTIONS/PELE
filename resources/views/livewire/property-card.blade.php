@@ -14,6 +14,6 @@
       <span class="font-semibold">{{ $property->bathrooms }}</span> bathrooms |
       <span class="font-semibold">{{ $property->area }}</span> sqft
     </div>
-    <div class="text-gray-500">{{ $property->location }}</div>
+    <div class="text-gray-500">{{ strtoupper($property->location) }}</div>
   </div>
 </a>
