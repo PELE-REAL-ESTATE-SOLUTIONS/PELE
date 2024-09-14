@@ -1,7 +1,7 @@
 <x-app-layout>
 
     <div class="py-5">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="mb-4 w-full flex items-center justify-between">
                 <div>
                     <h1 class="text-xl font-bold text-custom-blue leading-tight">Search Results</h1>
@@ -11,7 +11,7 @@
                 <x-main-button tag="a" path="{{ route('create-property-listings')}}">Create Listing</x-main-button>
             </div>
             @if($properties && count($properties) != 0)
-            <div class="grid grid-cols-3 gap-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                 @foreach ($properties as $property)
                 @livewire('property-card', ['property' => $property])
                 @endforeach
@@ -22,6 +22,8 @@
             @else
             <x-empty />
             @endif
+            {{--
+            @livewire('property-grid') --}}
 
 
 

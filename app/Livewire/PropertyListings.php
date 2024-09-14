@@ -2,17 +2,28 @@
 
 namespace App\Livewire;
 
+use Livewire\Component;
+use Livewire\Attributes\On;
 use App\Models\Property;
 use Illuminate\Http\Request;
-use Livewire\Component;
 
 class PropertyListings extends Component
 {
+    public $properties; 
+
+    protected $listeners = ['filtered-property' => 'filter'];
+
+    #[On('filtered-property')]
+    public function filter($listings = null) {
+        dd(22);
+        $this->properties = $listings;
+    }
+
     public function render()
     {
-        $properties = Property::paginate(5);
-
-        return view('property-listing.index', ['properties' => $properties]);
+        // $this->dispatch('filtered-property');
+        $this->properties = Property::orderBy('created_at', 'desc')->paginate(6);
+        return view('property-listing.index', ['properties' => $this->properties]);
     }
 
     public function create()
@@ -67,7 +78,7 @@ class PropertyListings extends Component
     public function show(Property $property) {
 
         $pictures = json_decode($property->pictures_paths, true);
-        $firstFivePictures = array_slice($pictures, 0, 4);
+        $firstFivePictures = array_slice($pictures, 0, 5);
         return view('property-listing.show',['property' => $property, 'firstFivePictures' => $firstFivePictures]);
     }
 }

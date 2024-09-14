@@ -1,7 +1,7 @@
 <x-app-layout>
 
     <div class="py-5">
-        <div class="max-w-7xl mx-auto p-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="mb-4 w-full flex items-center justify-between">
                 <div>
                     <h1 class="text-xl font-bold text-custom-blue leading-tight">Photos</h1>
