@@ -2,12 +2,13 @@
 
 namespace App\Livewire;
 
-use App\Models\PropertyOwner;
 use Livewire\Component;
 use App\Models\Property;
 use Livewire\Attributes\On;
 use Illuminate\Http\Request;
+use App\Models\PropertyOwner;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class PropertyListings extends Component
 {
@@ -94,5 +95,43 @@ class PropertyListings extends Component
         $pictures = json_decode($property->pictures_paths, true);
         $firstFivePictures = array_slice($pictures, 0, 5);
         return view('property-listing.show', ['property' => $property, 'firstFivePictures' => $firstFivePictures]);
+    }
+
+    public function edit(Property $property)
+    {
+        if (Gate::allows('edit-listing', $property)) {
+            return view('property-listing.edit', ['property' => $property]);
+        }
+
+        return redirect('/property-listings');
+    }
+
+    public function update(Request $request, Property $property)
+    {
+        if (!Gate::allows('edit-listing', $property)) {
+            return redirect('/property-listings');
+        }
+
+        $attributes = $request->validate([
+            'property_type' => ['required', 'string', 'max:225'],
+            'listing_type' => ['required', 'string', 'max:225'],
+            'price' => ['required', 'numeric'],
+            'location' => ['required', 'string', 'max:225'],
+            'area' => ['required', 'numeric'],
+            'bedrooms' => ['required', 'integer'],
+            'bathrooms' => ['required', 'integer'],
+            'livingrooms' => ['required', 'integer'],
+            'kitchens' => ['required', 'integer'],
+            'diningrooms' => ['required', 'integer'],
+            'description' => ['required', 'string', 'max:5000'],
+            'amenities' => ['required', 'string', 'max:5000'],
+            'terms_of_service' => ['required', 'accepted'],
+        ]);
+
+        unset($attributes['terms_of_service']);
+
+        $property->update($attributes);
+        return redirect('/property-listings/' . $property->id);
+
     }
 }
