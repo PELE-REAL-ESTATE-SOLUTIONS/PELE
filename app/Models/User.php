@@ -62,4 +62,9 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function propertyOwner()
+    {
+        return $this->hasOne(PropertyOwner::class);
+    }
 }

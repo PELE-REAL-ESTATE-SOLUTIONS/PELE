@@ -2,19 +2,22 @@
 
 namespace App\Livewire;
 
+use App\Models\PropertyOwner;
 use Livewire\Component;
-use Livewire\Attributes\On;
 use App\Models\Property;
+use Livewire\Attributes\On;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PropertyListings extends Component
 {
-    public $properties; 
+    public $properties;
 
     protected $listeners = ['filtered-property' => 'filter'];
 
     #[On('filtered-property')]
-    public function filter($listings = null) {
+    public function filter($listings = null)
+    {
         dd(22);
         $this->properties = $listings;
     }
@@ -31,20 +34,21 @@ class PropertyListings extends Component
         return view('property-listing.create');
     }
 
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
         $attributes = $request->validate([
-            'property_type'=> ['required', 'string', 'max:225'],
-            'listing_type'=> ['required', 'string', 'max:225'],
-            'price'=> ['required', 'numeric'],
-            'location'=>  ['required', 'string', 'max:225'],
-            'area'=> ['required', 'numeric'],
-            'bedrooms'=> ['required', 'integer'],
-            'bathrooms'=> ['required', 'integer'],
-            'livingrooms'=> ['required', 'integer'],
-            'kitchens'=> ['required', 'integer'],
-            'diningrooms'=> ['required', 'integer'],
-            'description'=> ['required', 'string', 'max:5000'],
-            'amenities'=> ['required', 'string', 'max:5000'],
+            'property_type' => ['required', 'string', 'max:225'],
+            'listing_type' => ['required', 'string', 'max:225'],
+            'price' => ['required', 'numeric'],
+            'location' => ['required', 'string', 'max:225'],
+            'area' => ['required', 'numeric'],
+            'bedrooms' => ['required', 'integer'],
+            'bathrooms' => ['required', 'integer'],
+            'livingrooms' => ['required', 'integer'],
+            'kitchens' => ['required', 'integer'],
+            'diningrooms' => ['required', 'integer'],
+            'description' => ['required', 'string', 'max:5000'],
+            'amenities' => ['required', 'string', 'max:5000'],
             'pictures' => ['required', 'array', 'min:5', 'max:30'],
             'pictures.*' => ['required', 'file', 'mimes:jpg,png,jpeg,pdf', 'max:2048'],
             'terms_of_service' => ['required', 'accepted'],
@@ -70,15 +74,28 @@ class PropertyListings extends Component
         unset($attributes['pictures']);
         $attributes['pictures_paths'] = json_encode($uploadedFiles);
 
+
+        // Check if user is a property owner
+        $property_owner = PropertyOwner::where('user_id', '=', Auth::id())->get();
+        // If false make user property owner and create listing
+        if (!$property_owner || count($property_owner) == 0) {
+            Auth::user()->propertyOwner()->create();
+        }
+
+        // If true add property listing
+        $attributes['property_owner_id'] = Auth::id();
         Property::create($attributes);
         return redirect()->route('property-listings');
 
+
+
     }
 
-    public function show(Property $property) {
+    public function show(Property $property)
+    {
 
         $pictures = json_decode($property->pictures_paths, true);
         $firstFivePictures = array_slice($pictures, 0, 5);
-        return view('property-listing.show',['property' => $property, 'firstFivePictures' => $firstFivePictures]);
+        return view('property-listing.show', ['property' => $property, 'firstFivePictures' => $firstFivePictures]);
     }
 }
