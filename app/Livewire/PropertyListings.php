@@ -134,4 +134,14 @@ class PropertyListings extends Component
         return redirect('/property-listings/' . $property->id);
 
     }
+
+    public function destroy(Property $property)
+    {
+        if (!Gate::allows('edit-listing', $property)) {
+            return redirect('/property-listings');
+        }
+
+        $property->delete();
+        return redirect('/dashboard');
+    }
 }

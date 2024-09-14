@@ -25,9 +25,5 @@ class AppServiceProvider extends ServiceProvider
         Gate::define('edit-listing', function (User $user, Property $property) {
             return $property->propertyOwner->user->is($user);
         });
-
-        Gate::define('delete-listing', function (User $user, Property $property) {
-            return $property->propertyOwner->user->is($user);
-        });
     }
 }

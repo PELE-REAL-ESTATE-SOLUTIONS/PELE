@@ -23,6 +23,7 @@ Route::middleware([
     Route::get('/property-listings/{property}', [PropertyListings::class, 'show'])->name('listing-details');
     Route::get('/property-listings/{property}/edit', [PropertyListings::class, 'edit'])->name('edit');
     Route::patch('/property-listings/{property}', [PropertyListings::class, 'update'])->name('update');
+    Route::delete('/property-listings/{property}', [PropertyListings::class, 'destroy']);
 
     Route::get('/property-listings/{property}/images', [Gallery::class, 'render'])->name('gallery');
 });

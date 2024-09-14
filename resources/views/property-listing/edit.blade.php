@@ -159,11 +159,15 @@
                     </label>
                 </div>
                 <div class="w-full flex items-center justify-between my-10">
-                    <x-main-button color="bg-red-700">Delete Listing
+                    <x-main-button form="delete-property" color="bg-red-700">Delete Listing
                     </x-main-button>
                     <x-main-button color="bg-custom-purple">Update Listing
                     </x-main-button>
                 </div>
+            </form>
+            <form method="POST" action="/property-listings/{{ $property->id }}" class="hidden" id="delete-property">
+                @csrf
+                @method('DELETE')
             </form>
 
 
