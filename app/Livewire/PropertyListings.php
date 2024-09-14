@@ -86,9 +86,6 @@ class PropertyListings extends Component
         $attributes['property_owner_id'] = Auth::id();
         Property::create($attributes);
         return redirect()->route('property-listings');
-
-
-
     }
 
     public function show(Property $property)

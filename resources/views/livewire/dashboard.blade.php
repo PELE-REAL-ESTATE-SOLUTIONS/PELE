@@ -11,7 +11,7 @@
                 <x-main-button tag="a" path="{{ route('create-property-listings')}}">Create Listing</x-main-button>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="flex flex-col-reverse md:grid grid-cols-3 gap-8">
                 <div class="col-span-2 space-y-6">
                     @foreach ($properties as $property)
                     @livewire('dashboard-property-card', ['property' => $property])
@@ -22,11 +22,25 @@
                     </div>
                     <!-- Repeat the above div for other listings -->
                 </div>
-                <div>
-                    <div class="bg-white dark:bg-gray-800 dark:border-gray-700 rounded-lg border p-6">
+                <div class="w-full md:w-auto">
+                    <div class="bg-white dark:bg-gray-800 dark:border-gray-700 rounded-lg border p-6 w-full md:w-auto">
                         <h3 class="text-lg dark:text-white font-semibold mb-4">Recent Customers</h3>
                         <p class="text-gray-500 dark:text-white/50 mb-4">Total number of clients: 4</p>
-                        <ul class="space-y-4">
+                        <ul class="space-y-4 w-full md:w-auto">
+                            <li class="flex items-center justify-between">
+                                <div class="flex items-center">
+                                    <img src="https://abh.ai/random/400/400" alt="Jenny Wilson"
+                                        class="w-10 h-10 rounded-full mr-3">
+                                    <div>
+                                        <p class="font-medium dark:text-white">Jenny Wilson</p>
+                                        <p class="text-gray-500 dark:text-white/80 text-sm">w.lawson@example.com</p>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-sm dark:text-white">Date</p>
+                                    <p class="text-gray-500 dark:text-white/80 text-sm">Time</p>
+                                </div>
+                            </li>
                             <li class="flex items-center justify-between">
                                 <div class="flex items-center">
                                     <img src="https://abh.ai/random/400/400" alt="Jenny Wilson"

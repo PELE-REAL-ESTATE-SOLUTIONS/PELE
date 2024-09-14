@@ -34,10 +34,12 @@
                     <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('saved')">
                         {{ __('SAVED') }}
                     </x-nav-link>
+                    @if (Auth::user()->propertyOwner)
                     <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')"
                         class="gradient-text hover:opacity-80 transition-opacity">
                         {{ __('DASHBOARD') }}
                     </x-nav-link>
+                    @endif
 
                     {{-- <a href="#" class="text-custom-purple hover:opacity-80 transition-opacity"></a>
                     <a href="#" class="gradient-text hover:opacity-80 transition-opacity"></a> --}}
