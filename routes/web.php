@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Middleware\IsPropertyOwner;
 use App\Livewire\Dashboard;
 use App\Livewire\Gallery;
@@ -26,4 +27,9 @@ Route::middleware([
     Route::delete('/property-listings/{property}', [PropertyListings::class, 'destroy']);
 
     Route::get('/property-listings/{property}/images', [Gallery::class, 'render'])->name('gallery');
+
+    // Admin Routes
+    Route::get('/admin/dashbaord', [AdminController::class, 'index'])->name('admin.dashbaord');
+    Route::get('/admin/property-owners', [AdminController::class, 'showOwners'])->name('owners');
+    Route::get('/admin/pending', [AdminController::class, 'index']);
 });
