@@ -53,11 +53,11 @@
                                                 class="px-6 py-3 text-start text-md font-medium text-gray-500 uppercase dark:text-neutral-500">
                                                 Joined On</th>
                                             <th scope="col"
-                                                class="px-6 py-3 text-start text-md font-medium text-gray-500 uppercase dark:text-neutral-500">
-                                                Properties</th>
-                                            <th scope="col"
                                                 class="px-6 py-3 text-end text-md font-medium text-gray-500 uppercase dark:text-neutral-500">
-                                                Action</th>
+                                                Properties</th>
+                                            {{-- <th scope="col"
+                                                class="px-6 py-3 text-end text-md font-medium text-gray-500 uppercase dark:text-neutral-500">
+                                                Action</th> --}}
                                         </tr>
                                     </thead>
                                     <tbody class="divide-y divide-gray-200 dark:divide-neutral-700">
@@ -82,14 +82,14 @@
                                                 {{ $owner->created_at }}</td>
 
                                             <td
-                                                class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200">
+                                                class="px-6 py-4 whitespace-nowrap text-end text-sm text-gray-800 dark:text-neutral-200">
                                                 {{ count($owner->properties) }}</td>
-                                            <td class="px-6 py-1 whitespace-nowrap text-end text-sm font-medium">
+                                            {{-- <td class="px-6 py-1 whitespace-nowrap text-end text-sm font-medium">
                                                 <a href="/"
                                                     class="py-2 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
                                                     View
                                                 </a>
-                                            </td>
+                                            </td> --}}
                                         </tr>
 
                                         @endforeach

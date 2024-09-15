@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-admin-layout>
 
     <div class="py-5">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -10,25 +10,25 @@
                 </div>
             </div>
 
-            <div class="grid grid-cols-4 gap-4 mb-4">
+            <div class="relative overflow-hidden h-96 grid grid-cols-4 gap-4 mb-4">
                 @foreach($firstFivePictures as $picture)
                 @if ($loop->first)
                 <div class="h-full col-span-2 relative">
-                    <img src="{{ asset('storage/' . $picture) }}" alt="Property Picture" />
+                    <img src="{{ asset('storage/' . $picture) }}" alt="Property Picture" class="h-full" />
                 </div>
                 @endif
                 @endforeach
-                <div class="col-span-2 grid grid-cols-2 gap-4">
+                <div class="h-96 col-span-2 grid grid-cols-2 gap-4">
                     @foreach($firstFivePictures as $picture)
                     @if (!$loop->first)
-                    <img src="{{ asset('storage/' . $picture) }}" alt="Property Picture">
+                    <img src="{{ asset('storage/' . $picture) }}" alt="Property Picture" class="h-auto w-full">
                     @endif
 
                     @endforeach
                 </div>
             </div>
             <div class="w-full flex items-center justify-end mb-8">
-                <a href="{{ route('gallery', ['property' => $property]) }}"
+                <a href="{{ route('admin.gallery', ['property' => $property]) }}"
                     class="px-4 py-2 bg-transparent border-2 dark:border-gray-800 text-purple-600 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50 transition duration-150 ease-in-out">
                     View all photos
                 </a>
@@ -67,7 +67,7 @@
                         Dining Room</span>
                 </div>
                 <div class="grid grid-cols-3 gap-8">
-                    <div class="col-span-2 border border-custom-blue rounded-lg p-6">
+                    <div class="col-span-2 border rounded-lg p-6">
                         <h3 class="text-xl font-semibold mb-4 dark:text-white">Description</h3>
                         <p class="text-gray-600 mb-4 dark:text-gray-300">
                             {{ $property->description }}
@@ -77,17 +77,39 @@
                             {{ $property->amenities }}
                         </p>
                     </div>
-                    <div class=" border border-custom-blue rounded-lg h-fit p-6">
-                        <button
-                            class="w-full bg-gradient-to-r from-custom-purple to-custom-blue text-white py-3 rounded-md mb-4">GET
-                            THIS HOUSE</button>
-                        <button class="w-full border border-purple-600 text-purple-600 py-3 rounded-md">REQUEST FOR A
-                            TOUR</button>
+
+                    <div class=" border rounded-lg h-fit p-6">
+                        @if ($property->approved == 0)
+                        <button type="submit" form="approval-form"
+                            class="w-full bg-green-500 hover:bg-green-600 text-white py-3 rounded-md mb-4 transition-all duration-400">APPROVE</button>
+                        <button type="submit" form="rejection-form"
+                            class="w-full border bg-red-600 hover:bg-red-700 text-white py-3 rounded-md transition-all duration-400">REJECT</button>
+                        @else
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">This property has been been reviewed approved
+                            by
+                            admin-name. Is there any issue with this property?</p>
+                        <button type="submit" form="revoke-form"
+                            class="w-full border bg-red-600 hover:bg-red-700 text-white py-3 rounded-md transition-all duration-400">REVOKE
+                            APPROVAL</button>
+                        @endif
                     </div>
+
                 </div>
             </div>
 
-
+            <form method="POST" action="{{ route('approve', ['property' => $property])}}" id="approval-form"
+                class="hidden">
+                @csrf
+            </form>
+            <form method="POST" action="{{ route('reject', ['property' => $property])}}" id="rejection-form"
+                class="hidden">
+                @csrf
+                @method('DELETE')
+            </form>
+            <form method="POST" action="{{ route('revoke', ['property' => $property])}}" id="revoke-form"
+                class="hidden">
+                @csrf
+            </form>
         </div>
     </div>
-</x-app-layout>
+</x-admin-layout>

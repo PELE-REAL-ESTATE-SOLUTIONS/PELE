@@ -29,7 +29,13 @@ Route::middleware([
     Route::get('/property-listings/{property}/images', [Gallery::class, 'render'])->name('gallery');
 
     // Admin Routes
-    Route::get('/admin/dashbaord', [AdminController::class, 'index'])->name('admin.dashbaord');
+    Route::get('/admin/dashbaord', [AdminController::class, 'index'])->name('admin.dashboard');
     Route::get('/admin/property-owners', [AdminController::class, 'showOwners'])->name('owners');
-    Route::get('/admin/pending', [AdminController::class, 'index']);
+    Route::get('/admin/pending', [AdminController::class, 'showPending'])->name('pending');
+    Route::get('/admin/approveded', [AdminController::class, 'showApproved'])->name('approved');
+    Route::get('/admin/{property}/review', [AdminController::class, 'review'])->name('review');
+    Route::get('/admin/{property}/gallery', [AdminController::class, 'gallery'])->name('admin.gallery');
+    Route::post('/admin/{property}/review', [AdminController::class, 'approve'])->name('approve');
+    Route::delete('/admin/{property}', [AdminController::class, 'reject'])->name('reject');
+    Route::post('/admin/{property}/revoke', [AdminController::class, 'revoke'])->name('revoke');
 });

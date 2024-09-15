@@ -18,7 +18,7 @@
                     <x-nav-link href="{{ route('owners') }}" :active="request()->routeIs('owners')">
                         {{ __('PROPERTY OWNERS') }}
                     </x-nav-link>
-                    <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('sell')">
+                    <x-nav-link href="{{ route('pending') }}" :active="request()->routeIs('pending')">
                         {{ __('PENDING') }}
                     </x-nav-link>
                     {{-- <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('rent')">
@@ -35,10 +35,10 @@
             <div class="hidden sm:block flex-shrink-0">
                 <div class="flex space-x-4">
 
-                    <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('rent')">
+                    <x-nav-link href="{{ route('approved') }}" :active="request()->routeIs('approved')">
                         {{ __('APPROVED') }}
                     </x-nav-link>
-                    <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                    <x-nav-link href="{{ route('admin.dashboard') }}" :active="request()->routeIs('admin.dashboard')">
                         {{ __('DASHBOARD') }}
                     </x-nav-link>
 
