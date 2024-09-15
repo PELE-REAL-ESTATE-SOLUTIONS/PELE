@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Property;
 use Illuminate\Http\Request;
 use App\Models\PropertyOwner;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
@@ -32,6 +33,12 @@ class AdminController extends Controller
         return view('admin.properties', ['listings' => $approvedListings, 'approved' => true]);
     }
 
+    public function showRejected()
+    {
+        $unapprovedListings = Property::where('approved', '=', 2)->with('propertyOwner')->paginate(20);
+        return view('admin.rejected', ['listings' => $unapprovedListings, 'approved' => false]);
+    }
+
     public function review(Property $property)
     {
         $pictures = json_decode($property->pictures_paths, true);
@@ -48,6 +55,7 @@ class AdminController extends Controller
     public function approve(Property $property)
     {
         $property->approved = 1;
+        $property->approved_by = Auth::user()->name;
         $property->save();
         $unapprovedListings = Property::where('approved', '=', 0)->with('propertyOwner')->paginate(20);
         return view('admin.properties', ['listings' => $unapprovedListings, 'approved' => false]);
@@ -55,7 +63,8 @@ class AdminController extends Controller
 
     public function revoke(Property $property)
     {
-        $property->approved = 0;
+        $property->approved = 2;
+        $property->approved_by = null;
         $property->save();
         $unapprovedListings = Property::where('approved', '=', 0)->with('propertyOwner')->paginate(20);
         return view('admin.properties', ['listings' => $unapprovedListings, 'approved' => false]);
@@ -63,8 +72,15 @@ class AdminController extends Controller
 
     public function reject(Property $property)
     {
-        $property->delete();
+        $property->approved = 2;
+        $property->approved_by = null;
+        $property->save();
         $unapprovedListings = Property::where('approved', '=', 0)->with('propertyOwner')->paginate(20);
         return view('admin.properties', ['listings' => $unapprovedListings, 'approved' => false]);
+    }
+
+    public function search()
+    {
+
     }
 }

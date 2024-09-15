@@ -30,7 +30,7 @@
                 </div>
             </div>
             <div class="absolute left-1/2 transform -translate-x-1/2">
-                <a href="{{ route('property-listings') }}" class="text-2xl font-bold dark:text-white">PELE</a>
+                <p class="text-2xl font-bold dark:text-white">PELE</p>
             </div>
             <div class="hidden sm:block flex-shrink-0">
                 <div class="flex space-x-4">
@@ -38,8 +38,12 @@
                     <x-nav-link href="{{ route('approved') }}" :active="request()->routeIs('approved')">
                         {{ __('APPROVED') }}
                     </x-nav-link>
-                    <x-nav-link href="{{ route('admin.dashboard') }}" :active="request()->routeIs('admin.dashboard')">
+                    {{-- <x-nav-link href="{{ route('admin.dashboard') }}"
+                        :active="request()->routeIs('admin.dashboard')">
                         {{ __('DASHBOARD') }}
+                    </x-nav-link> --}}
+                    <x-nav-link href="{{ route('rejected') }}" :active="request()->routeIs('rejected')">
+                        {{ __('REJECTED') }}
                     </x-nav-link>
 
                     {{-- <a href="#" class="text-custom-purple hover:opacity-80 transition-opacity"></a>

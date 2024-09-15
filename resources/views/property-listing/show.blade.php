@@ -10,18 +10,20 @@
                 </div>
             </div>
 
-            <div class="grid grid-cols-4 gap-4 mb-4">
+            <div class="relative overflow-hidden h-max grid grid-cols-4 gap-4 mb-4">
                 @foreach($firstFivePictures as $picture)
                 @if ($loop->first)
-                <div class="h-full col-span-2 relative">
-                    <img src="{{ asset('storage/' . $picture) }}" alt="Property Picture" />
+                <div class="h-[30rem] col-span-2 relative">
+                    <img src="{{ asset('storage/' . $picture) }}" alt="Property Picture" class="h-full w-full" />
                 </div>
                 @endif
                 @endforeach
-                <div class="col-span-2 grid grid-cols-2 gap-4">
+                <div class="h-[30rem] col-span-2 grid grid-cols-2 grid-rows-2 gap-4">
                     @foreach($firstFivePictures as $picture)
                     @if (!$loop->first)
-                    <img src="{{ asset('storage/' . $picture) }}" alt="Property Picture">
+                    <div>
+                        <img src="{{ asset('storage/' . $picture) }}" alt="Property Picture" class="h-full w-full">
+                    </div>
                     @endif
 
                     @endforeach

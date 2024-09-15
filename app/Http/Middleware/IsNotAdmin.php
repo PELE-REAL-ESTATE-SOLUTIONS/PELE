@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class IsPropertyOwner
+class IsNotAdmin
 {
     /**
      * Handle an incoming request.
@@ -15,10 +15,10 @@ class IsPropertyOwner
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if ($request->user()->propertyOwner) {
+        if ($request->user()->is_admin != 1) {
             return $next($request);
         }
 
-        return redirect('/property-listings');
+        return redirect('/admin/dashboard');
     }
 }

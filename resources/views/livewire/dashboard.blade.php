@@ -15,7 +15,6 @@
                 <div class="col-span-2 space-y-6">
                     @foreach ($properties as $property)
                     @livewire('dashboard-property-card', ['property' => $property])
-
                     @endforeach
                     <div class="mt-4">
                         {{ $properties->links() }}

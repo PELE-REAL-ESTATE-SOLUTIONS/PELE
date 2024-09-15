@@ -2,20 +2,11 @@
     <div class="py-5">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="mb-4 w-full flex items-center justify-between">
-                @if ($approved == false)
                 <div>
-                    <h1 class="text-xl font-bold text-custom-blue leading-tight">Unapproved Listings</h1>
-                    <p class="text-sm text-gray-400 leading-relaxed">This table shows the list of properties that have
-                        been submitted to be listed on the site.</p>
-                </div>
-
-                @else
-                <div>
-                    <h1 class="text-xl font-bold text-custom-blue leading-tight">Approved Listings</h1>
+                    <h1 class="text-xl font-bold text-custom-blue leading-tight">Rejected Listings</h1>
                     <p class="text-sm text-gray-400 leading-relaxed">This table shows the list of properties that are
-                        approved and made available to users.</p>
+                        rejected or have their approval revoked.</p>
                 </div>
-                @endif
             </div>
             <div class="flex flex-col mt-5">
                 <div class="-m-1.5 overflow-x-auto">

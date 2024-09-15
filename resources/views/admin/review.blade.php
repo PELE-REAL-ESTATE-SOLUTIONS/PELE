@@ -10,18 +10,20 @@
                 </div>
             </div>
 
-            <div class="relative overflow-hidden h-96 grid grid-cols-4 gap-4 mb-4">
+            <div class="relative overflow-hidden h-max grid grid-cols-4 gap-4 mb-4">
                 @foreach($firstFivePictures as $picture)
                 @if ($loop->first)
-                <div class="h-full col-span-2 relative">
-                    <img src="{{ asset('storage/' . $picture) }}" alt="Property Picture" class="h-full" />
+                <div class="h-[30rem] col-span-2 relative">
+                    <img src="{{ asset('storage/' . $picture) }}" alt="Property Picture" class="h-full w-full" />
                 </div>
                 @endif
                 @endforeach
-                <div class="h-96 col-span-2 grid grid-cols-2 gap-4">
+                <div class="h-[30rem] col-span-2 grid grid-cols-2 grid-rows-2 gap-4">
                     @foreach($firstFivePictures as $picture)
                     @if (!$loop->first)
-                    <img src="{{ asset('storage/' . $picture) }}" alt="Property Picture" class="h-auto w-full">
+                    <div>
+                        <img src="{{ asset('storage/' . $picture) }}" alt="Property Picture" class="h-full w-full">
+                    </div>
                     @endif
 
                     @endforeach
@@ -79,11 +81,11 @@
                     </div>
 
                     <div class=" border rounded-lg h-fit p-6">
-                        @if ($property->approved == 0)
+                        @if ($property->approved != 1)
                         <button type="submit" form="approval-form"
                             class="w-full bg-green-500 hover:bg-green-600 text-white py-3 rounded-md mb-4 transition-all duration-400">APPROVE</button>
                         <button type="submit" form="rejection-form"
-                            class="w-full border bg-red-600 hover:bg-red-700 text-white py-3 rounded-md transition-all duration-400">REJECT</button>
+                            class="w-full bg-red-600 hover:bg-red-700 text-white py-3 rounded-md transition-all duration-400">REJECT</button>
                         @else
                         <p class="text-gray-600 dark:text-gray-300 mb-4">This property has been been reviewed approved
                             by
