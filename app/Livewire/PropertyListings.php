@@ -14,13 +14,43 @@ class PropertyListings extends Component
 {
     public $properties;
 
-    protected $listeners = ['filtered-property' => 'filter'];
+    public function filter(Request $request)
+    { {
+            $query = Property::query(); // Start the query builder
 
-    #[On('filtered-property')]
-    public function filter($listings = null)
-    {
-        dd(22);
-        $this->properties = $listings;
+            if ($request->location) {
+                $query->where('location', 'like', '%' . $request->location . '%');
+            }
+
+            if ($request->listing_type && $request->listing_type != 'all') {
+                $query->where('listing_type', 'like', '%' . $request->listing_type . '%');
+            }
+
+            if ($request->price && $request->price != 'all') {
+                list($start, $end) = explode('-', $request->price);
+                $start = (int) $start;
+                $end = (int) $end;
+                $query->whereBetween('price', [$start, $end]);
+            }
+
+            if ($request->bedrooms && $request->bedrooms != 'any') {
+                list($start, $end) = explode('-', $request->bedrooms);
+                $start = (int) $start;
+                $end = (int) $end;
+                $query->whereBetween('bedrooms', [$start, $end]);
+            }
+
+            if ($request->bathrooms && $request->bathrooms != 'any') {
+                list($start, $end) = explode('-', $request->bathrooms);
+                $start = (int) $start;
+                $end = (int) $end;
+                $query->whereBetween('bathrooms', [$start, $end]);
+            }
+
+            // Fetch filtered results
+            $results = $query->paginate(6);
+            return view('property-listing.index', ['properties' => $results]);
+        }
     }
 
     public function render()

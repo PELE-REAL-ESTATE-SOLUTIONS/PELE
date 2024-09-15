@@ -1,8 +1,9 @@
-<div
+<form method="POST" action="{{ route('filter-listings')}}"
   class="sticky top-16 w-full bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 shadow-md p-4 z-40">
+  @csrf
   <div class="grid grid-cols-2 md:flex flex-wrap items-center gap-4">
     <div class="col-span-2 w-full md:w-auto flex-grow">
-      <input wire:model.live='location'
+      <input wire:model.live='location' name="location" id="location"
         class="w-full px-3 py-2 dark:text-white dark:bg-gray-800 dark:border-none border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-custom-purple focus:border-transparent"
         placeholder="Location..." type="search" />
     </div>
@@ -58,4 +59,4 @@
       Search
     </x-primary-button>
   </div>
-</div>
+</form>
