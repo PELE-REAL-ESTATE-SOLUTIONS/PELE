@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use ZipArchive;
 use App\Models\Property;
 use Illuminate\Http\Request;
 use App\Models\PropertyOwner;
@@ -77,6 +78,33 @@ class AdminController extends Controller
         $property->save();
         $unapprovedListings = Property::where('approved', '=', 0)->with('propertyOwner')->paginate(20);
         return view('admin.properties', ['listings' => $unapprovedListings, 'approved' => false]);
+    }
+
+    public function downloadAll(Property $property)
+    {
+
+        $files = $property->documents_paths;
+        // Assuming files is a collection of file paths
+
+        // Create a new ZIP file
+        $zip = new ZipArchive;
+        $zipFileName = 'property_files_' . $property->id . '.zip';
+        $zipFilePath = storage_path('app/public/' . $zipFileName);
+
+        if ($zip->open($zipFilePath, ZipArchive::CREATE) === TRUE) {
+            // dd($files);
+            foreach ($files as $file) {
+                $filePath = storage_path('app/public/' . $file->path);
+                if (file_exists($filePath)) {
+                    $zip->addFile($filePath, basename($filePath));
+                }
+            }
+            $zip->close();
+        } else {
+            abort(500, 'Could not create ZIP file.');
+        }
+
+        return response()->download($zipFilePath)->deleteFileAfterSend(true);
     }
 
     public function search()

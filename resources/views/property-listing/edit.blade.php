@@ -51,6 +51,8 @@
                                     ""}}>For Sale</option>
                                 <option value="rent" {{ $property->listing_type == 'rent' ? 'selected' :
                                     ""}}>For Rent</option>
+                                <option value="subletting" {{ $property->listing_type == 'subletting' ? 'selected' :
+                                    ""}}>For Subletting</option>
                             </x-listing-form.select>
 
                         </div>

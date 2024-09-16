@@ -31,8 +31,12 @@
             </div>
             <div class="w-full flex items-center justify-end mb-8">
                 <a href="{{ route('admin.gallery', ['property' => $property]) }}"
-                    class="px-4 py-2 bg-transparent border-2 dark:border-gray-800 text-purple-600 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50 transition duration-150 ease-in-out">
+                    class="mr-4 px-4 py-2 bg-transparent border-2 dark:border-gray-800 text-purple-600 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50 transition duration-150 ease-in-out">
                     View all photos
+                </a>
+                <a href="{{ route('property.download.all', ['property' => $property]) }}"
+                    class="px-4 py-2 border-2 dark:border-gray-800 text-purple-600 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50 transition duration-150 ease-in-out">
+                    Download Documents
                 </a>
             </div>
 

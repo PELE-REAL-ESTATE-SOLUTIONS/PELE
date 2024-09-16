@@ -127,7 +127,7 @@
                                             @if ($approved != false)
                                             <td
                                                 class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200">
-                                                {{ Auth::user()->name }}</td>
+                                                {{ $property->approved_by }}</td>
 
                                             @endif
                                             <td class="px-6 py-1 whitespace-nowrap text-end text-sm font-medium">

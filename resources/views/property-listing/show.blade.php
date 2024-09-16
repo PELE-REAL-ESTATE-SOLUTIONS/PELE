@@ -80,11 +80,19 @@
                         </p>
                     </div>
                     <div class=" border border-custom-blue rounded-lg h-fit p-6">
-                        <button
-                            class="w-full bg-gradient-to-r from-custom-purple to-custom-blue text-white py-3 rounded-md mb-4">GET
-                            THIS HOUSE</button>
-                        <button class="w-full border border-purple-600 text-purple-600 py-3 rounded-md">REQUEST FOR A
-                            TOUR</button>
+                        <div
+                            class="w-full bg-gradient-to-r from-custom-purple to-custom-blue text-white py-3 rounded-md mb-4">
+
+                            <a href="mailto:{{ $property->propertyOwner->user->email}}"
+                                class="w-full h-full flex items-center justify-center">
+                                GET THIS HOUSE</a>
+                        </div>
+                        <div class="w-full border border-purple-600 text-purple-600 py-3 rounded-md">
+
+                            <a href="mailto:{{ $property->propertyOwner->user->email}}"
+                                class="w-full h-full flex items-center justify-center">
+                                REQUEST FOR A TOUR</a>
+                        </div>
                     </div>
                 </div>
             </div>

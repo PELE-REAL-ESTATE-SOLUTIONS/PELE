@@ -56,8 +56,8 @@ class PropertyListings extends Component
     public function render()
     {
         // $this->dispatch('filtered-property');
-        $this->properties = Property::orderBy('created_at', 'desc')->paginate(6);
-        return view('property-listing.index', ['properties' => $this->properties]);
+        $properties = Property::where('approved', '=', 1)->orderBy('created_at', 'desc')->paginate(6);
+        return view('property-listing.index', ['properties' => $properties]);
     }
 
     public function create()
@@ -81,17 +81,25 @@ class PropertyListings extends Component
             'description' => ['required', 'string', 'max:5000'],
             'amenities' => ['required', 'string', 'max:5000'],
             'pictures' => ['required', 'array', 'min:5', 'max:30'],
-            'pictures.*' => ['required', 'file', 'mimes:jpg,png,jpeg,pdf', 'max:2048'],
+            'documents' => ['required', 'array', 'min:2', 'max:10'],
+            'pictures.*' => ['required', 'file', 'mimes:jpg,png,jpeg,pdf', 'max:3048'],
+            'documents.*' => ['required', 'file', 'mimes:pdf,doc,docx', 'max:3048'],
             'terms_of_service' => ['required', 'accepted'],
         ], [
             'pictures.required' => 'You must upload between 5 and 30 files.',
             'pictures.min' => 'You must upload at least 5 files.',
             'pictures.max' => 'You cannot upload more than 30 files.',
             'pictures.*.mimes' => 'Only jpg, png, jpeg, and pdf files are allowed.',
-            'pictures.*.max' => 'Each file must not be larger than 2MB.',
+            'pictures.*.max' => 'Each file must not be larger than 3MB.',
+            'documents.required' => 'You must upload between 2 and 10 supporting documents',
+            'documents.min' => 'You must upload at least 2 supporting documents.',
+            'documents.max' => 'You cannot upload more than 10 supporting documents',
+            'documents.*.mimes' => 'Only pdf, doc, and pdf supporting documents are allowed.',
+            'documents.*.max' => 'Each supporting document must not be larger than 3MB.',
         ]);
 
         $uploadedFiles = [];
+        $uploadedDocuments = [];
 
         // Handle the files
         if ($request->hasFile('pictures')) { // This should show an array of UploadedFile objects
@@ -101,9 +109,21 @@ class PropertyListings extends Component
                 $uploadedFiles[] = $filePath;
             }
         }
+
+        // Handle the documents
+        if ($request->hasFile('documents')) { // This should show an array of UploadedFile objects
+            foreach ($request->file('documents') as $picture) {
+                // Store each file
+                $filePath = $picture->store('documents', 'public'); // Stores in the 'public/uploads' directory
+                $uploadedDocuments[] = $filePath;
+            }
+        }
+
         unset($attributes['terms_of_service']);
         unset($attributes['pictures']);
+        unset($attributes['documents']);
         $attributes['pictures_paths'] = json_encode($uploadedFiles);
+        $attributes['documents_paths'] = json_encode($uploadedDocuments);
 
 
         // Check if user is a property owner

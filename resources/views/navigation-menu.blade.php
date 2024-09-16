@@ -31,9 +31,9 @@
             </div>
             <div class="hidden sm:block flex-shrink-0">
                 <div class="flex space-x-4">
-                    <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('saved')">
+                    {{-- <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('saved')">
                         {{ __('SAVED') }}
-                    </x-nav-link>
+                    </x-nav-link> --}}
                     @if (Auth::user()->propertyOwner)
                     <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')"
                         class="gradient-text hover:opacity-80 transition-opacity">
@@ -79,11 +79,11 @@
                                     {{ __('Profile') }}
                                 </x-dropdown-link>
 
-                                @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
+                                {{-- @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                                 <x-dropdown-link href="{{ route('api-tokens.index') }}">
                                     {{ __('API Tokens') }}
                                 </x-dropdown-link>
-                                @endif
+                                @endif --}}
 
                                 <div class="border-t border-gray-200 dark:border-gray-600"></div>
 
@@ -189,9 +189,9 @@
             <x-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('sell')">
                 {{ __('Sell') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('saved')">
+            {{-- <x-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('saved')">
                 {{ __('Saved') }}
-            </x-responsive-nav-link>
+            </x-responsive-nav-link> --}}
             <x-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
@@ -222,12 +222,12 @@
                     {{ __('Profile') }}
                 </x-responsive-nav-link>
 
-                @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
+                {{-- @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                 <x-responsive-nav-link href="{{ route('api-tokens.index') }}"
                     :active="request()->routeIs('api-tokens.index')">
                     {{ __('API Tokens') }}
                 </x-responsive-nav-link>
-                @endif
+                @endif --}}
 
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}" x-data>

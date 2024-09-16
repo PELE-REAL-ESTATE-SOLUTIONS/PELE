@@ -35,6 +35,7 @@
                             <x-listing-form.select name="listing_type">
                                 <option value="sale">For Sale</option>
                                 <option value="rent">For Rent</option>
+                                <option value="subletting">For Subletting</option>
                             </x-listing-form.select>
 
                         </div>
@@ -42,7 +43,8 @@
 
                     <div class="grid grid-cols-2 gap-6">
                         <div>
-                            <x-listing-form.label for="price">Price (NLE)</x-listing-form.label>
+                            <x-listing-form.label for="price">Price (NLE) - (Per month for renting & subletting)
+                            </x-listing-form.label>
                             <x-listing-form.input type="number" name="price" placeholder="150000" step="0.00001" />
                         </div>
                         <div>
@@ -117,6 +119,22 @@
                                 </span>
                                 <input id="pictures" name="pictures[]" type="file" class="hidden" accept="image/*"
                                     multiple>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="space-y-6 px-6 py-6 border rounded-lg mb-6">
+                    <div class="grid grid-cols-1 gap-6">
+                        <div class="w-full max-w-md">
+                            <label for="documents"
+                                class="flex flex-col items-center justify-center w-full h-32 px-4 transition border-2 border-custom-blue border-dashed rounded-lg appearance-none cursor-pointer hover:border-blue-500 focus:outline-none">
+                                <span class="flex flex-col items-center space-y-1">
+                                    <span class="font-medium text-blue-900">Upload Documents that validate your
+                                        ownership</span>
+                                    <span class="text-xs text-blue-600">DocumentName.pdf</span>
+                                </span>
+                                <input id="documents" name="documents[]" type="file" class="hidden"
+                                    accept=".pdf,.doc,.docx" multiple>
                             </label>
                         </div>
                     </div>

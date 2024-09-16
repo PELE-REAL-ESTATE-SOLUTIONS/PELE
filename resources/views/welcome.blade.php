@@ -28,9 +28,9 @@
     <header class="sticky top-0  z-20 w-full py-6 px-4 sm:px-6 lg:px-8 bg-white border-b">
         <div class="container mx-auto flex justify-between items-center">
             <nav class="hidden md:flex space-x-10">
-                <a href="#" class="text-base font-medium text-custom-purple hover:text-custom-blue">BUY</a>
-                <a href="#" class="text-base font-medium text-custom-purple hover:text-custom-blue">RENT</a>
-                <a href="#" class="text-base font-medium text-custom-purple hover:text-custom-blue">SELL</a>
+                <a href="#" class=" text-custom-purple hover:text-custom-blue">BUY</a>
+                <a href="#" class=" text-custom-purple hover:text-custom-blue">RENT</a>
+                <a href="#" class=" text-custom-purple hover:text-custom-blue">SELL</a>
             </nav>
             <p class="flex items-center space-x-2">
                 {{-- <i data-feather="home" class="h-8 w-8 text-custom-purple"></i> --}}
@@ -49,8 +49,8 @@
             <div class="hidden md:flex">
                 @auth
                 <a href="{{ url('/property-listings') }}"
-                    class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-custom-blue focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-custom-purple dark:focus-visible:ring-white">
-                    Listings
+                    class="rounded-md px-3 py-2 text-custom-purple ring-1 ring-transparent transition hover:text-custom-blue focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-custom-purple dark:focus-visible:ring-white">
+                    HOME
                 </a>
                 @else
                 <a href="{{ route('login') }}"
@@ -83,8 +83,8 @@
             @if (Route::has('login'))
             @auth
             <a href="{{ url('/property-listings') }}"
-                class="text-xl font-medium text-custom-purple hover:text-custom-blue">
-                Listings
+                class="bg-custom-blue/10 px-3 py-1 rounded text-xl font-medium text-custom-blue hover:text-custom-blue">
+                HOME
             </a>
             @else
             <a href="{{ route('login') }}"

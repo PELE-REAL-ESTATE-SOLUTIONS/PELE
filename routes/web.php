@@ -49,4 +49,5 @@ Route::middleware([
     Route::post('/admin/{property}/review', [AdminController::class, 'approve'])->name('approve');
     Route::delete('/admin/{property}', [AdminController::class, 'reject'])->name('reject');
     Route::post('/admin/{property}/revoke', [AdminController::class, 'revoke'])->name('revoke');
+    Route::get('/admin/{property}/download-all', [AdminController::class, 'downloadAll'])->name('property.download.all');
 });

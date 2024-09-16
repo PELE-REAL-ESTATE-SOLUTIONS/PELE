@@ -27,6 +27,7 @@ return new class extends Migration {
             $table->text('description');
             $table->text('amenities');
             $table->json('pictures_paths');
+            $table->json('documents_paths');
             $table->boolean('featured')->default(false);
             $table->boolean('approved')->default(false);
             $table->string('approved_by')->nullable()->default(null);
