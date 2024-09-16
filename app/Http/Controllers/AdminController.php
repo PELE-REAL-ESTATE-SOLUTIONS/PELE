@@ -7,6 +7,7 @@ use App\Models\Property;
 use Illuminate\Http\Request;
 use App\Models\PropertyOwner;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 
 class AdminController extends Controller
 {
@@ -17,7 +18,7 @@ class AdminController extends Controller
 
     public function showOwners()
     {
-        $propertyOwenrs = PropertyOwner::with('properties')->latest()->paginate(7);
+        $propertyOwenrs = PropertyOwner::with('user')->with('properties')->latest()->paginate(7);
         return view('admin.propertyowners', ['owners' => $propertyOwenrs]);
     }
 
@@ -82,28 +83,32 @@ class AdminController extends Controller
 
     public function downloadAll(Property $property)
     {
+        // Decode the stored JSON paths for documents
+        $documents = json_decode($property->documents_paths, true);
 
-        $files = $property->documents_paths;
-        // Assuming files is a collection of file paths
+        if (!$documents || count($documents) === 0) {
+            return redirect()->back()->with('error', 'No documents available for download.');
+        }
 
-        // Create a new ZIP file
+        // Create a temporary zip file
+        $zipFileName = 'property_documents_' . $property->propertyOwner->user->name . '_property' . '.zip';
+        $zipFilePath = storage_path('app/public/documents/' . $zipFileName);
+
         $zip = new ZipArchive;
-        $zipFileName = 'property_files_' . $property->id . '.zip';
-        $zipFilePath = storage_path('app/public/' . $zipFileName);
-
         if ($zip->open($zipFilePath, ZipArchive::CREATE) === TRUE) {
-            // dd($files);
-            foreach ($files as $file) {
-                $filePath = storage_path('app/public/' . $file->path);
-                if (file_exists($filePath)) {
+            // Add each document to the zip
+            foreach ($documents as $document) {
+                $filePath = storage_path('app/public/' . $document);
+                if (File::exists($filePath)) {
                     $zip->addFile($filePath, basename($filePath));
                 }
             }
             $zip->close();
         } else {
-            abort(500, 'Could not create ZIP file.');
+            return redirect()->back()->with('error', 'Failed to create a zip file.');
         }
 
+        // Download the zip file
         return response()->download($zipFilePath)->deleteFileAfterSend(true);
     }
 
