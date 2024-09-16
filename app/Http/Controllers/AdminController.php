@@ -17,7 +17,7 @@ class AdminController extends Controller
 
     public function showOwners()
     {
-        $propertyOwenrs = PropertyOwner::with('user')->with('properties')->latest()->paginate(7);
+        $propertyOwenrs = PropertyOwner::with('properties')->latest()->paginate(7);
         return view('admin.propertyowners', ['owners' => $propertyOwenrs]);
     }
 

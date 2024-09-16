@@ -48,19 +48,16 @@
             @if (Route::has('login'))
             <div class="hidden md:flex">
                 @auth
-                <a href="{{ url('/property-listings') }}"
-                    class="rounded-md px-3 py-2 text-custom-purple ring-1 ring-transparent transition hover:text-custom-blue focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-custom-purple dark:focus-visible:ring-white">
+                <a href="{{ url('/property-listings') }}" class=" text-custom-purple hover:text-custom-blue">
                     HOME
                 </a>
                 @else
-                <a href="{{ route('login') }}"
-                    class="rounded-md px-3 py-2 text-custom-purple ring-1 ring-transparent transition hover:text-custom-blue focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-custom-purple dark:focus-visible:ring-white">
+                <a href="{{ route('login') }}" class=" text-custom-purple hover:text-custom-blue mr-4">
                     LOG IN
                 </a>
 
                 @if (Route::has('register'))
-                <a href="{{ route('register') }}"
-                    class="rounded-md px-3 py-2 gradient-text ring-1 ring-transparent transition hover:text-custom-blue focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-custom-purple dark:focus-visible:ring-white">
+                <a href="{{ route('register') }}" class=" text-custom-purple hover:text-custom-blue">
                     REGISTER
                 </a>
                 @endif

@@ -133,8 +133,9 @@ class PropertyListings extends Component
             Auth::user()->propertyOwner()->create();
         }
 
+        $property_owner_id = PropertyOwner::where('user_id', '=', Auth::id())->pluck('id')->first();
         // If true add property listing
-        $attributes['property_owner_id'] = Auth::id();
+        $attributes['property_owner_id'] = $property_owner_id;
         Property::create($attributes);
         return redirect()->route('property-listings');
     }
