@@ -15,7 +15,6 @@ Route::get('/', function () {
     return view('welcome', ['featured_properties' => $featured_properties]);
 });
 
-Route::get('/property-listings/{property}', [PropertyListings::class, 'show'])->name('listing-details');
 Route::get('/property-listings/{property}/images', [Gallery::class, 'render'])->name('gallery');
 
 Route::middleware([
@@ -37,6 +36,9 @@ Route::middleware([
 
     // Route::get('/property-listings/{property}/images', [Gallery::class, 'render'])->name('gallery');
 });
+
+// Define this route before '/property-listings/create' route will result in a 404 error for the create listing page
+Route::get('/property-listings/{property}', [PropertyListings::class, 'show'])->name('listing-details');
 
 Route::middleware([
     'auth:sanctum',
