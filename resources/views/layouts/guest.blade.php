@@ -19,9 +19,9 @@
     @livewireStyles
 </head>
 
-<body>
+<body class="dark:bg-gray-900">
     @if (preg_match("*property-listings*", request()->path()))
-        <header class="sticky top-0  z-20 w-full py-6 px-4 sm:px-6 lg:px-8 bg-white border-b">
+        <header class="sticky top-0  z-20 w-full py-6 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-900 border-b dark:border-gray-800">
             <div class="container mx-auto flex justify-between items-center">
                 <nav class="hidden md:flex space-x-10">
                     <a href="#" class=" text-custom-purple hover:text-custom-blue">BUY</a>
@@ -30,7 +30,7 @@
                 </nav>
                 <p class="flex items-center space-x-2">
                     {{-- <i data-feather="home" class="h-8 w-8 text-custom-purple"></i> --}}
-                    <a href="/" class="text-2xl font-bold">PELE</a>
+                    <a href="/" class="text-2xl font-bold dark:text-white">PELE</a>
                 </p>
                 <button id="menu-toggle"
                     class="md:hidden text-gray-500 hover:text-blue-600 focus:outline-none focus:text-blue-600"

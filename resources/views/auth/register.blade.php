@@ -1,13 +1,13 @@
 <x-guest-layout>
     <div class="absolute top-4 left-4">
-        <a href="/" class=" no-underline hover:underline transition-all duration-500"> &larr; Go Back</a>
+        <a href="/" class="dark:text-white no-underline hover:underline transition-all duration-500"> &larr; Go Back</a>
     </div>
     <x-authentication-card>
 
         <!-- Form Section -->
         <div class="w-full md:w-[45%] p-8">
-            <h1 class="text-4xl font-bold mb-2">Join us today 👋</h1>
-            <p class="text-gray-600 mb-8">
+            <h1 class="text-4xl font-bold mb-2 dark:text-white">Join us today 👋</h1>
+            <p class="text-gray-600 mb-8 dark:text-gray-300">
                 Pele is a company that aims to reinvent the way properties are acquired, by providing a safe, reliable
                 marketplace for property owners and clients to meet and transact.
             </p>
@@ -38,7 +38,7 @@
                     Create Account
                 </button>
             </form>
-            <p class="mt-4 text-sm text-gray-600">
+            <p class="mt-4 text-sm text-gray-600 dark:text-gray-400">
                 Already have an account? <a href="/login" class="text-[#8F00FF] hover:underline">Login here</a>
             </p>
         </div>

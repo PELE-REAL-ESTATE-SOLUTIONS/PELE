@@ -49,7 +49,10 @@ class PropertyListings extends Component
 
             // Fetch filtered results
             $results = $query->where('approved', '=', 1)->paginate(6);
-            return view('property-listing.index', ['properties' => $results]);
+            if (Auth::user()) {
+                return view('property-listing.index', ['properties' => $results]);
+            }
+            return view('property-listing.guest.index', ['properties' => $results]);
         }
     }
 
@@ -57,7 +60,10 @@ class PropertyListings extends Component
     {
         // $this->dispatch('filtered-property');
         $properties = Property::where('approved', '=', 1)->orderBy('created_at', 'desc')->paginate(6);
-        return view('property-listing.index', ['properties' => $properties]);
+        if (Auth::user()) {
+            return view('property-listing.index', ['properties' => $properties]);
+        }
+        return view('property-listing.guest.index', ['properties' => $properties]);
     }
 
     public function create()

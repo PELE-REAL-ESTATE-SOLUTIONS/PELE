@@ -1,13 +1,13 @@
 <x-guest-layout>
     <div class="absolute top-4 left-4">
-        <a href="/" class="hover:underline"> &larr; Go Back</a>
+        <a href="/" class="dark:text-white no-underline hover:underline transition-all duration-500"> &larr; Go Back</a>
     </div>
     <x-authentication-card>
 
         <!-- Form Section -->
         <div class="w-full md:w-[45%] p-8">
-            <h1 class="text-4xl font-bold mb-2">Welcome Back 👋</h1>
-            <p class="text-gray-600 mb-8">
+            <h1 class="text-4xl font-bold mb-2 dark:text-white">Welcome Back 👋</h1>
+            <p class="text-gray-600 dark:text-gray-300 mb-8">
                 With PELE your home is just a few clicks away!
             </p>
             <form method="POST" action="{{ route('login') }}" class="space-y-4">
@@ -36,7 +36,7 @@
                 </div>
 
             </form>
-            <p class="mt-4 text-sm text-gray-600">
+            <p class="mt-4 text-sm text-gray-600 dark:text-gray-400">
                 Don't have an account? <a href="/register" class="text-[#8F00FF] hover:underline">Create free
                     account</a>
             </p>

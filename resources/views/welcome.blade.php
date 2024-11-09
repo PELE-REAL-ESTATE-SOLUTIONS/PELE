@@ -24,8 +24,8 @@
     <script src="https://unpkg.com/feather-icons"></script>
 </head>
 
-<body class="flex flex-col min-h-screen dark:bg-gray-900 hover:cursor-default">
-    <header class="sticky top-0  z-20 w-full py-6 px-4 sm:px-6 lg:px-8 bg-white border-b">
+<body class="flex flex-col min-h-screen hover:cursor-default">
+    <header class="sticky top-0  z-20 w-full py-6 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-900 border-b dark:border-gray-800">
         <div class="container mx-auto flex justify-between items-center">
             <nav class="hidden md:flex space-x-10">
                 <a href="#" class=" text-custom-purple hover:text-custom-blue">BUY</a>
@@ -34,7 +34,7 @@
             </nav>
             <p class="flex items-center space-x-2">
                 {{-- <i data-feather="home" class="h-8 w-8 text-custom-purple"></i> --}}
-                <span class="text-2xl font-bold">PELE</span>
+                <span class="text-2xl font-bold dark:text-white">PELE</span>
             </p>
             <button id="menu-toggle"
                 class="md:hidden text-gray-500 hover:text-blue-600 focus:outline-none focus:text-blue-600"
@@ -136,7 +136,7 @@
                 <div class="mt-10 max-w-xl w-full">
                     <div class="flex gap-4">
                         <input type="text" placeholder="Enter location"
-                            class="text-black flex-grow px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            class="text-black flex-grow px-4 py-2 border border-gray-300 dark:border-gray-700 dark:bg-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
                         <button
                             class="px-6 py-2 bg-custom-purple text-white font-semibold rounded-md hover:bg-blue-700">Search</button>
                     </div>
@@ -146,19 +146,19 @@
         {{-- End of Hero Section --}}
 
         {{-- Featured Properties Section --}}
-        <section class="py-16 bg-gray-50">
+        <section class="py-16 bg-gray-50 dark:bg-gray-900">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-3xl font-bold text-center mb-12">Featured Properties</h2>
+                <h2 class="text-3xl font-bold text-center mb-12 dark:text-white">Featured Properties</h2>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                     @foreach ($featured_properties as $featured_property)
                         @livewire('property-card', ['property' => $featured_property])
                     @endforeach
                 </div>
                 <div class="mt-12 text-center">
-                    <button id="see-more-btn"
+                    <a href="{{ route('property-listings' )}}" id="see-more-btn"
                         class="px-14 py-3 bg-custom-blue text-white font-semibold rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition duration-150 ease-in-out">
                         SEE MORE
-                    </button>
+                    </a>
                 </div>
             </div>
         </section>
