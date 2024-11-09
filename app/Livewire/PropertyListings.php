@@ -48,7 +48,7 @@ class PropertyListings extends Component
             }
 
             // Fetch filtered results
-            $results = $query->paginate(6);
+            $results = $query->where('approved', '=', 1)->paginate(6);
             return view('property-listing.index', ['properties' => $results]);
         }
     }
