@@ -24,7 +24,7 @@
     <script src="https://unpkg.com/feather-icons"></script>
 </head>
 
-<body class="flex flex-col min-h-screen hover:cursor-default">
+<body class="flex flex-col min-h-screen dark:bg-gray-900 hover:cursor-default">
     <header class="sticky top-0  z-20 w-full py-6 px-4 sm:px-6 lg:px-8 bg-white border-b">
         <div class="container mx-auto flex justify-between items-center">
             <nav class="hidden md:flex space-x-10">
@@ -122,6 +122,7 @@
     </div>
 
     <main class="flex-grow">
+        {{-- Hero Section --}}
         <section class="relative bg-gray-900 text-white">
             <img src="{{ asset('images/hero-demo.jpg')}}" alt="Luxury home"
                 class="absolute inset-0 w-full h-full object-cover opacity-50">
@@ -142,12 +143,17 @@
                 </div>
             </div>
         </section>
+        {{-- End of Hero Section --}}
 
+        {{-- Featured Properties Section --}}
         <section class="py-16 bg-gray-50">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 class="text-3xl font-bold text-center mb-12">Featured Properties</h2>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                     @foreach ($featured_properties as $featured_property)
+                        @livewire('property-card', ['property' => $featured_property])
+                    @endforeach
+                    {{-- <div class="bg-white rounded-lg shadow-md overflow-hidden">
                         <img src="{{ asset('images/featured_1.jpg')}}" alt="Featured property 1"
                             class="w-full h-48 object-cover">
                         <div class="p-6">
@@ -188,7 +194,7 @@
                                     Details</button>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="mt-12 text-center">
                     <button id="see-more-btn"
@@ -198,7 +204,9 @@
                 </div>
             </div>
         </section>
+        {{-- End of Featured Properties Section --}}
 
+        {{-- Services Section --}}
         <section class="py-16">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 class="text-3xl font-bold text-center mb-12">Our Services</h2>
@@ -225,7 +233,9 @@
                 </div>
             </div>
         </section>
+        {{-- End of Services Section --}}
 
+        {{-- Client Testimonial Section --}}
         <section class="py-16 bg-custom-purple text-white">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="max-w-3xl mx-auto text-center">
@@ -238,6 +248,7 @@
                 </div>
             </div>
         </section>
+        {{-- End of Client Testimonial Section --}}
     </main>
 
     <footer class="bg-gray-900 text-white">

@@ -7,10 +7,12 @@ use App\Http\Middleware\IsPropertyOwner;
 use App\Livewire\Dashboard;
 use App\Livewire\Gallery;
 use App\Livewire\PropertyListings;
+use App\Models\Property;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    $featured_properties = Property::where('approved', '=', 1)->where('featured', '=', 1)->latest()->take(3)->get();
+    return view('welcome', ['featured_properties' => $featured_properties]);
 });
 
 Route::middleware([
