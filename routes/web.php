@@ -15,6 +15,9 @@ Route::get('/', function () {
     return view('welcome', ['featured_properties' => $featured_properties]);
 });
 
+Route::get('/property-listings/{property}', [PropertyListings::class, 'show'])->name('listing-details');
+Route::get('/property-listings/{property}/images', [Gallery::class, 'render'])->name('gallery');
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -27,12 +30,12 @@ Route::middleware([
     Route::get('/property-listings/create', [PropertyListings::class, 'create'])->name('create-property-listings');
     Route::post('/property-listings', [PropertyListings::class, 'store'])->name('add-listing');
     Route::post('/property-listings/filter', [PropertyListings::class, 'filter'])->name('filter-listings');
-    Route::get('/property-listings/{property}', [PropertyListings::class, 'show'])->name('listing-details');
+    // Route::get('/property-listings/{property}', [PropertyListings::class, 'show'])->name('listing-details');
     Route::get('/property-listings/{property}/edit', [PropertyListings::class, 'edit'])->name('edit');
     Route::patch('/property-listings/{property}', [PropertyListings::class, 'update'])->name('update');
     Route::delete('/property-listings/{property}', [PropertyListings::class, 'destroy']);
 
-    Route::get('/property-listings/{property}/images', [Gallery::class, 'render'])->name('gallery');
+    // Route::get('/property-listings/{property}/images', [Gallery::class, 'render'])->name('gallery');
 });
 
 Route::middleware([

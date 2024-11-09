@@ -150,51 +150,9 @@
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 class="text-3xl font-bold text-center mb-12">Featured Properties</h2>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                     @foreach ($featured_properties as $featured_property)
+                    @foreach ($featured_properties as $featured_property)
                         @livewire('property-card', ['property' => $featured_property])
                     @endforeach
-                    {{-- <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                        <img src="{{ asset('images/featured_1.jpg')}}" alt="Featured property 1"
-                            class="w-full h-48 object-cover">
-                        <div class="p-6">
-                            <h3 class="font-semibold text-lg mb-2">Villa</h3>
-                            <p class="text-gray-600 mb-4">Beautiful 4 bedroom villa with stunning views</p>
-                            <div class="flex justify-between items-center">
-                                <span class="font-bold text-custom-purple">NLE 300,000</span>
-                                <button
-                                    class="px-4 py-2 border border-custom-purple text-custom-purple rounded-md hover:bg-custom-purple hover:text-white">View
-                                    Details</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                        <img src="{{ asset('images/featured_2.jpg')}}" alt="Featured property 2"
-                            class="w-full h-48 object-cover">
-                        <div class="p-6">
-                            <h3 class="font-semibold text-lg mb-2">Villa</h3>
-                            <p class="text-gray-600 mb-4">Beautiful 5 bedroom villa with stunning views</p>
-                            <div class="flex justify-between items-center">
-                                <span class="font-bold text-custom-purple">NLE 200,000</span>
-                                <button
-                                    class="px-4 py-2 border border-custom-purple text-custom-purple rounded-md hover:bg-custom-purple hover:text-white">View
-                                    Details</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                        <img src="{{ asset('images/featured_3.jpg')}}" alt="Featured property 3"
-                            class="w-full h-48 object-cover">
-                        <div class="p-6">
-                            <h3 class="font-semibold text-lg mb-2">Mansion</h3>
-                            <p class="text-gray-600 mb-4">Beautiful 6 bedroom villa with stunning views</p>
-                            <div class="flex justify-between items-center">
-                                <span class="font-bold text-custom-purple">NLE 500,000</span>
-                                <button
-                                    class="px-4 py-2 border border-custom-purple text-custom-purple rounded-md hover:bg-custom-purple hover:text-white">View
-                                    Details</button>
-                            </div>
-                        </div>
-                    </div> --}}
                 </div>
                 <div class="mt-12 text-center">
                     <button id="see-more-btn"

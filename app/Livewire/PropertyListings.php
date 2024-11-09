@@ -142,10 +142,12 @@ class PropertyListings extends Component
 
     public function show(Property $property)
     {
-
         $pictures = json_decode($property->pictures_paths, true);
         $firstFivePictures = array_slice($pictures, 0, 5);
-        return view('property-listing.show', ['property' => $property, 'firstFivePictures' => $firstFivePictures]);
+        if (Auth::check()) {
+            return view('property-listing.show', ['property' => $property, 'firstFivePictures' => $firstFivePictures]);
+        }
+        return view('property-listing.guest.show', ['property' => $property, 'firstFivePictures' => $firstFivePictures]);
     }
 
     public function edit(Property $property)

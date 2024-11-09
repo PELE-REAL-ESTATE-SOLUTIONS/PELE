@@ -19,10 +19,103 @@
     @livewireStyles
 </head>
 
-<body>
-    <div class="font-sans antialiased min-h-screen flex items-center justify-center hover:cursor-default">
-        {{ $slot }}
+<body class="flex flex-col min-h-screen dark:bg-gray-900 hover:cursor-default">
+    <header class="sticky top-0  z-20 w-full py-6 px-4 sm:px-6 lg:px-8 bg-white border-b">
+        <div class="container mx-auto flex justify-between items-center">
+            <nav class="hidden md:flex space-x-10">
+                <a href="#" class=" text-custom-purple hover:text-custom-blue">BUY</a>
+                <a href="#" class=" text-custom-purple hover:text-custom-blue">RENT</a>
+                <a href="#" class=" text-custom-purple hover:text-custom-blue">SELL</a>
+            </nav>
+            <p class="flex items-center space-x-2">
+                {{-- <i data-feather="home" class="h-8 w-8 text-custom-purple"></i> --}}
+                <a href="/" class="text-2xl font-bold">PELE</a>
+            </p>
+            <button id="menu-toggle"
+                class="md:hidden text-gray-500 hover:text-blue-600 focus:outline-none focus:text-blue-600"
+                aria-label="Toggle menu">
+                <i data-feather="menu" class="h-6 w-6"></i>
+            </button>
+            {{-- <button
+                class="hidden md:inline-flex px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-custom-purple hover:bg-blue-700">
+                Get in Touch
+            </button> --}}
+            @if (Route::has('login'))
+            <div class="hidden md:flex">
+                @auth
+                <a href="{{ url('/property-listings') }}" class=" text-custom-purple hover:text-custom-blue">
+                    HOME
+                </a>
+                @else
+                <a href="{{ route('login') }}" class=" text-custom-purple hover:text-custom-blue mr-4">
+                    LOG IN
+                </a>
+
+                @if (Route::has('register'))
+                <a href="{{ route('register') }}" class=" text-custom-purple hover:text-custom-blue">
+                    REGISTER
+                </a>
+                @endif
+                @endauth
+            </div>
+            @endif
+        </div>
+    </header>
+    <div id="mobile-menu"
+        class="hidden md:hidden fixed inset-0 bg-white z-50 flex flex-col justify-center items-center">
+        <button id="close-menu"
+            class="absolute top-6 right-6 text-gray-500 hover:text-blue-600 focus:outline-none focus:text-blue-600"
+            aria-label="Close menu">
+            <i data-feather="x" class="h-6 w-6"></i>
+        </button>
+        <nav class="flex flex-col space-y-6 text-center">
+            <a href="#" class="text-xl font-medium text-custom-purple hover:text-custom-blue">BUY</a>
+            <a href="#" class="text-xl font-medium text-custom-purple hover:text-custom-blue">RENT</a>
+            <a href="#" class="text-xl font-medium text-custom-purple hover:text-custom-blue">SELL</a>
+            @if (Route::has('login'))
+            @auth
+            <a href="{{ url('/property-listings') }}"
+                class="bg-custom-blue/10 px-3 py-1 rounded text-xl font-medium text-custom-blue hover:text-custom-blue">
+                HOME
+            </a>
+            @else
+            <a href="{{ route('login') }}"
+                class="bg-custom-blue/10 px-3 py-1 rounded text-xl font-medium text-custom-blue hover:text-custom-blue">
+                LOG IN
+            </a>
+
+            @if (Route::has('register'))
+            <a href="{{ route('register') }}"
+                class="bg-custom-blue/10 px-3 py-1 rounded text-xl font-medium text-custom-blue hover:text-custom-blue">
+                REGISTER
+            </a>
+            @endif
+            @endauth
+            @endif
+        </nav>
+        {{-- @if (Route::has('login'))
+        <div class="flex flex-col space-y-6 text-center">
+            @auth
+            <a href="{{ url('/property-listings') }}"
+                class="text-xl font-medium text-custom-purple hover:text-custom-blue">
+                Listings
+            </a>
+            @else
+            <a href="{{ route('login') }}" class="text-xl font-medium text-custom-purple hover:text-custom-blue">
+                LOG IN
+            </a>
+
+            @if (Route::has('register'))
+            <a href="{{ route('register') }}"
+                class="rounded-md px-3 py-2 gradient-text ring-1 ring-transparent transition hover:text-custom-blue focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-custom-purple dark:focus-visible:ring-white">
+                REGISTER
+            </a>
+            @endif
+            @endauth
+        </div>
+        @endif --}}
     </div>
+    {{ $slot }}
 
     @livewireScripts
 </body>
