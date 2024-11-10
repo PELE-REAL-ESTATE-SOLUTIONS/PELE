@@ -7,6 +7,9 @@
                     <h1 class="text-xl font-bold text-custom-blue leading-tight">Listing Details</h1>
                     <p class="text-sm text-gray-400 leading-relaxed">Please enter the accurate details of the property
                         you want to list.</p>
+                    <a href="{{ route('property-listings') }}"
+                        class="text-sm text-gray-400 leading-relaxed hover:underline">&larr; Go
+                        Back</a>
                 </div>
             </div>
 
