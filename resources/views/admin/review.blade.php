@@ -93,7 +93,7 @@
                         @else
                         <p class="text-gray-600 dark:text-gray-300 mb-4">This property has been been reviewed approved
                             by
-                            admin-name. Is there any issue with this property?</p>
+                            {{ $property->approved_by }}. Is there any issue with this property?</p>
                         <button type="submit" form="revoke-form"
                             class="w-full border bg-red-600 hover:bg-red-700 text-white py-3 rounded-md transition-all duration-400">REVOKE
                             APPROVAL</button>
