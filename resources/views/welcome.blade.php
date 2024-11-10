@@ -134,12 +134,13 @@
                     Discover quality properties in prime locations. Let us guide you to your perfect home.
                 </p>
                 <div class="mt-10 max-w-xl w-full">
-                    <div class="flex gap-4">
-                        <input type="text" placeholder="Enter location"
-                            class="text-black flex-grow px-4 py-2 border border-gray-300 dark:border-gray-700 dark:bg-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-                        <button
+                    <form class="flex gap-4" method='POST' action="{{ route('filter-listings')}}">
+                        @csrf
+                        <input type="text" name="location" placeholder="Enter location"
+                            class="text-black dark:text-white flex-grow px-4 py-2 border border-gray-300 dark:border-gray-700 dark:bg-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <button type="submit"
                             class="px-6 py-2 bg-custom-purple text-white font-semibold rounded-md hover:bg-blue-700">Search</button>
-                    </div>
+                    </form>
                 </div>
             </div>
         </section>
